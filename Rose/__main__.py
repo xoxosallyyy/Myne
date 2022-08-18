@@ -281,63 +281,6 @@ async def help_button(client, query, _):
 
     return await client.answer_callback_query(query.id)
 
-from pymongo import MongoClient
-
-client = MongoClient(MONGO_URL)
-
-users = client['moin']['bots']
-
-
-def already_db(user_id):
-        user = users.find_one({"bot_token" : str(user_id)})
-        if not user:
-            return False
-        return True
-
-def add_user(user_id):
-    in_db = already_db(user_id)
-    if in_db:
-        return
-    return users.insert_one({"bot_token": str(user_id)}) 
-
-def remove_user(user_id):
-    in_db = already_db(user_id)
-    if not in_db:
-        return 
-    return users.delete_one({"bot_token": str(user_id)})
-
-@app.on_message(filters.private & filters.command("clone"))
-async def clone(_,message):
-    text = await message.reply("Usage:\n\n /clone token")
-    TOKEN = message.command[1]
-
-    add_user(TOKEN)
-  
-    try:
-        m = await text.edit("Booting Your Client")
-        client = Client( ":memory:", API_ID, API_HASH, bot_token=TOKEN, in_memory=True, plugins={"root": "handlers"})
-        await client.start()
-        idle()
-        user = await client.get_me()
-        await m.edit(f"Your Client Has Been Successfully Started As @{user.username}! ✅\n\nThanks for Cloning.")
-    
-    except Exception as e:
-        await message.reply(f"**ERROR:** `{str(e)}`\nPress /start to Start again.")
-
-
-op = users.find()
-
-for kk in op:
-    nam = [kk['bot_token']]
-
-    for usr in nam:
-        try:
-            print(usr)
-            app = Client("cache",api_id=API_ID, api_hash=API_HASH, bot_token=usr ,in_memory=True, plugins={"root": "handlers"})
-            app.start()
-
-        except errors.bad_request_400.AccessTokenExpired as e:
-            remove_user(usr)
 
 
 if __name__ == "__main__":
