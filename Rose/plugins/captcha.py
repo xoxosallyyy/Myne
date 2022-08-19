@@ -21,7 +21,7 @@ async def add_chat(client, message: Message, _):
     chat_id = message.chat.id
     user_id = message.from_user.id
     user = await app.get_chat_member(chat_id, user_id)
-    if user.status == "creator" or user.status == "administrator":
+    if user.status in ["creator" , "administrator"]:
       chat = captchas().chat_in_db(chat_id)
       if chat:
             await message.reply_text(_["capt1"])
