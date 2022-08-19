@@ -68,7 +68,7 @@ async def promoteFunc(_, message: Message):
         elif len(message.text.split()) == 2 and message.reply_to_message:
             title = message.text.split()[1]
         if title and len(title) > 16:
-            title = title[0:16]
+            title = title[:16]
         await app.set_administrator_title(message.chat.id, user_id,title)    
         return await message.reply_text(f"{umention} <b>Was Fullpromoted By</b> {message.from_user.mention} <b>with</b><code>{title}</code><b>title</b>")
     if message.command[0][0] == "m":
@@ -90,7 +90,7 @@ async def promoteFunc(_, message: Message):
         elif len(message.text.split()) == 2 and message.reply_to_message:
             title = message.text.split()[1]
         if title and len(title) > 16:
-            title = title[0:16]
+            title = title[:16]
         await app.set_administrator_title(message.chat.id, user_id,title)    
         return await message.reply_text(f"{umention} <b>Was Midpromoted By</b> {message.from_user.mention} <b>with</b><code>{title}</code><b>title</b>")
     await app.promote_chat_member(
@@ -110,7 +110,7 @@ async def promoteFunc(_, message: Message):
     elif len(message.text.split()) == 2 and message.reply_to_message:
             title = message.text.split()[1]
     if title and len(title) > 16:
-            title = title[0:16]
+            title = title[:16]
     await app.set_administrator_title(message.chat.id, user_id,title)
     await message.reply_text(f"{umention} <b>Was Promoted By</b> {message.from_user.mention} <b>with</b> <code>{title}</code> <b>title</b>")
 
@@ -134,7 +134,7 @@ async def demote(_, message: Message):
         can_manage_voice_chats=False,
     )
     umention = (await app.get_users(user_id)).mention
-    await message.reply_text(f"Demoted! {umention}")
+    await message.reply_text(f"Demoted! {umention} 🤙🏻")
 
 @app.on_message(command("banghost") & restrict_filter)
 @language
@@ -252,9 +252,9 @@ async def adminlist_show(_, m: Message):
         await m.reply_text(adminstr + "\n\n" + note)
     except Exception as ef:
         if str(ef) == str(m.chat.id):
-            await m.reply_text("Use /reload to reload admins!")
+            await m.reply_text("Use /reload to reload admins list!")
         else:
-            ef = str(ef) + f"{admin_list}\n"
+            ef = f"{str(ef)}{admin_list}\n"
             await m.reply_text("error : @slbotzone : `adminlist`")
     return
 
