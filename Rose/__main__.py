@@ -168,9 +168,10 @@ async def start(client, message: Message, _):
     if FSub == 400:
         return
     if message.chat.type != "private":
-        await message.reply(_["main2"], reply_markup=keyboard)
-        await adds_served_user(chat_id)     
-        return await add_served_chat(chat_id) 
+        await message.reply_text(_["main2"], reply_markup=keyboard)
+        await adds_served_user(message.from_user.id)     
+        await add_served_chat(chat_id) 
+
     if len(message.text.split()) > 1:
         name = (message.text.split(None, 1)[1]).lower()
         print(name)
@@ -190,7 +191,7 @@ async def start(client, message: Message, _):
         if name == "connections":
             await message.reply("** Run /connections to view or disconnect from groups!**")
     else:
-        await message.reply(f"""
+        await message.reply_text(f"""
 Hey there {message.from_user.mention}, 
 
 My name is {BOT_NAME} an  advanced telegram Group management Bot For helpYou Protect Your Groups & Suit For All Your Needs.feel free to add me to your groups! """,reply_markup=home_keyboard_pm)
@@ -206,11 +207,11 @@ async def help_command(client, message: Message, _):
             if str(name) in HELPABLE:
                 key = InlineKeyboardMarkup(
                     [[InlineKeyboardButton(text=_["main3"], url=f"t.me/{BOT_USERNAME}?start=help_{name}")]])
-                await message.reply(_["main4"],reply_markup=key)
+                await message.reply_text(_["main4"],reply_markup=key)
             else:
-                await message.reply(_["main2"], reply_markup=keyboard)
+                await message.reply_text(_["main2"], reply_markup=keyboard)
         else:
-            await message.reply(_["main2"], reply_markup=keyboard)
+            await message.reply_text(_["main2"], reply_markup=keyboard)
     else:
         if len(message.command) >= 2:
             name = (message.text.split(None, 1)[1]).replace(" ", "_").lower()
@@ -221,13 +222,13 @@ async def help_command(client, message: Message, _):
                 if hasattr(HELPABLE[name], "__helpbtns__"):
                        button = (HELPABLE[name].__helpbtns__) + [[InlineKeyboardButton("Back", callback_data="bot_commands")]]
                 if not hasattr(HELPABLE[name], "__helpbtns__"): button = [[InlineKeyboardButton("Back", callback_data="bot_commands")]]
-                await message.reply(text,reply_markup=InlineKeyboardMarkup(button),disable_web_page_preview=True)
+                await message.reply_text(text,reply_markup=InlineKeyboardMarkup(button),disable_web_page_preview=True)
             else:
                 text, help_keyboard = await help_parser(message.from_user.first_name)
-                await message.reply(_["main5"],reply_markup=help_keyboard,disable_web_page_preview=True)
+                await message.reply_text(_["main5"],reply_markup=help_keyboard,disable_web_page_preview=True)
         else:
             text, help_keyboard = await help_parser(message.from_user.first_name)
-            await message.reply(
+            await message.reply_text(
                 text, reply_markup=help_keyboard, disable_web_page_preview=True
             )
     return
