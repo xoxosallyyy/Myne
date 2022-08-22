@@ -5,8 +5,7 @@ from Rose.utils.lang import *
 
 
 fbuttons = InlineKeyboardMarkup(
-        [
-          [
+        [[
             InlineKeyboardButton(text="💬 Support Group", url="https://t.me/szrosesupport"),
             InlineKeyboardButton(text="🔔 News Channel", url="https://t.me/Theszrosebot")
           ], 
@@ -16,13 +15,11 @@ fbuttons = InlineKeyboardMarkup(
           ], 
           [
             InlineKeyboardButton("« Back", callback_data='startcq')
-          ],
-        ]
+          ]]
 )
 
 keyboard =InlineKeyboardMarkup(
-    [
-      [
+    [[
         InlineKeyboardButton(text="🇱🇷 English", callback_data="languages_en")
       ],
       [
@@ -45,8 +42,7 @@ keyboard =InlineKeyboardMarkup(
       ], 
       [   
         InlineKeyboardButton("Back", callback_data='startcq')
-      ]
-    ]
+      ]]
 )
 
 @app.on_callback_query(filters.regex("_langs"))

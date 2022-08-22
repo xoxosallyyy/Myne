@@ -170,7 +170,7 @@ async def start(client, message: Message, _):
     if message.chat.type != "private":
         await message.reply_text(_["main2"], reply_markup=keyboard)
         await adds_served_user(message.from_user.id)     
-        await add_served_chat(chat_id) 
+        return await add_served_chat(chat_id) 
 
     if len(message.text.split()) > 1:
         name = (message.text.split(None, 1)[1]).lower()
