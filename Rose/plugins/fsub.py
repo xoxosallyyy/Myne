@@ -4,9 +4,9 @@ import asyncio
 from pyrogram import Client
 from pyrogram.errors import FloodWait, UserNotParticipant
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message
-from config import F_SUB_CHANNEL
+from config import Config
 
-CHANNEL_ID = F_SUB_CHANNEL
+CHANNEL_ID = Config.F_SUB_CHANNEL
 
 
 async def ForceSub(bot: Client, event: Message):
