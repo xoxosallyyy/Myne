@@ -14,7 +14,7 @@ fbuttons = InlineKeyboardMarkup(
             InlineKeyboardButton(text="🗂 Documentation", url="https://szsupunma.gitbook.io/rose-bot")
           ], 
           [
-            InlineKeyboardButton("« Back", callback_data='startcq')
+            InlineKeyboardButton("Back", callback_data='startcq')
           ]]
 )
 

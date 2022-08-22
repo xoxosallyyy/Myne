@@ -1,27 +1,20 @@
 import asyncio
-
 import importlib
-
 import re
-
 from contextlib import (
     closing,
     suppress
 )
-
 from uvloop import install
-
 from pyrogram import ( 
     filters, 
     idle
 )
-
 from pyrogram.types import (
     InlineKeyboardButton,
     InlineKeyboardMarkup, 
     Message
 )
-
 from Rose import (
     app,
     BOT_USERNAME,
@@ -29,72 +22,47 @@ from Rose import (
     BOT_NAME,
     aiohttpsession
 )
-
 from Rose.plugins import ALL_MODULES
-
 from Rose.utils import paginate_modules
-
 from lang import get_command
-
 from Rose.utils.lang import (
     language,
     languageCB
 )
-
 from Rose.utils.start import (
     get_private_rules,
     get_learn
 )
-
 from Rose.mongo.usersdb import (
     adds_served_user,
     add_served_user
 )
-
 from Rose.mongo.chatsdb import add_served_chat
-
 from Rose.plugins.fsub import ForceSub
-
 from config import Config
-
 loop = asyncio.get_event_loop()
 
 flood = {}
-
-START_COMMAND = get_command("START_COMMAND")
-
-HELP_COMMAND = get_command("HELP_COMMAND")
-
 HELPABLE = {}
 
 async def start_bot():
-
     global HELPABLE
-
     for module in ALL_MODULES:
-
         imported_module = importlib.import_module("Rose.plugins." + module)
-
         if (
             hasattr(imported_module, "__MODULE__")
             and imported_module.__MODULE__
         ):
-
             imported_module.__MODULE__ = imported_module.__MODULE__
-
             if (
                 hasattr(imported_module, "__HELP__")
                 and imported_module.__HELP__
             ):
-
                 HELPABLE[
                     imported_module.__MODULE__.replace(" ", "_").lower()
                 ] = imported_module
-
     all_module = ""
-    
     j = 1
-
     for i in ALL_MODULES:
         if j == 1:
             all_module += "•≫ Successfully imported:{:<15}.py\n".format(i)
@@ -102,9 +70,7 @@ async def start_bot():
         else:
             all_module += "•≫ Successfully imported:{:<15}.py".format(i)
         j += 1   
-                
     print(f"{all_module}")
-
     print("""
  _____________________________________________   
 |                                             |  
@@ -112,13 +78,9 @@ async def start_bot():
 |         (C) 2021-2022 by @szteambots        | 
 |          Greetings from supun  :)           |
 |_____________________________________________| """)
-
     await idle()
-
     await aiohttpsession.close()
-
     await app.stop()
-
     for task in asyncio.all_tasks():
         task.cancel() 
     print("Bot gone offline ):")
@@ -132,13 +94,13 @@ home_keyboard_pm = InlineKeyboardMarkup(
             url=f"http://t.me/{BOT_USERNAME}?startgroup=new")
         ],
         [
-            InlineKeyboardButton(text="About", 
+            InlineKeyboardButton(text="ℹ️ About", 
             callback_data="_about"),
-            InlineKeyboardButton(text="languages ", 
+            InlineKeyboardButton(text="🌍 languages ", 
             callback_data="_langs")
         ],
         [
-            InlineKeyboardButton(text="Help", 
+            InlineKeyboardButton(text="⚒ Help", 
             callback_data="bot_commands")
         ],
         [
@@ -167,7 +129,7 @@ async def start(client, message: Message, _):
     FSub = await ForceSub(bot, message)
     if FSub == 400:
         return
-    if message.chat.type != "private":
+    if message.chat.type == "private":
         await message.reply_text(_["main2"], reply_markup=keyboard)
         await adds_served_user(message.from_user.id)     
         return await add_served_chat(chat_id) 
