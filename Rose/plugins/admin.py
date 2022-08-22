@@ -34,7 +34,7 @@ async def sendasbot(client, message: Message, _):
         await app.send_message(chat_id, text=message.text.split(None, 1)[1])
 
 
-@app.on_message(filters.command(["promote", "fullpromote","midpromote"])& ~filters.edited & ~filters.private & promote_filter)
+@app.on_message(filters.command(["promote", "fullpromote","midpromote"]) & ~filters.private & promote_filter)
 async def promoteFunc(_, message: Message):
     user_id = await extract_user(message)
     umention = (await app.get_users(user_id)).mention
@@ -110,7 +110,7 @@ async def promoteFunc(_, message: Message):
     await app.set_administrator_title(message.chat.id, user_id,title)
     await message.reply_text(f"{umention} <b>Was Promoted By</b> {message.from_user.mention} <b>with</b> <code>{title}</code> <b>title</b>")
 
-@app.on_message(filters.command("demote") & ~filters.edited & ~filters.private & promote_filter)
+@app.on_message(filters.command("demote")  & ~filters.private & promote_filter)
 async def demote(_, message: Message):
     user_id = await extract_user(message)
     if not user_id:
