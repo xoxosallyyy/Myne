@@ -300,8 +300,7 @@ async def member_has_left(_, message: Message):
                 text = text.replace("{last}", (await app.get_users(user_id).last_name))
 
             if status:
-                await app.send_message(
-                     chat_id=group_id,
+                await message.reply_text(
                      text=text,
                      reply_markup=button,
                      disable_web_page_preview=True,

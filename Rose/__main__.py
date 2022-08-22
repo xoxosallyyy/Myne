@@ -159,114 +159,77 @@ keyboard = InlineKeyboardMarkup(
     ]
 )
 
-@app.on_message(filters.command(START_COMMAND))
+@app.on_message(filters.command("start"))
 @language
 async def start(client, message: Message, _):
     chat_id = message.chat.id
-    
     print(chat_id)
-
     FSub = await ForceSub(bot, message)
     if FSub == 400:
         return
-
     if message.chat.type != "private":
         await message.reply(_["main2"], reply_markup=keyboard)
         await adds_served_user(chat_id)     
         return await add_served_chat(chat_id) 
-
     if len(message.text.split()) > 1:
-
         name = (message.text.split(None, 1)[1]).lower()
-
         print(name)
-
         if name.startswith("rules"):
                 return await get_private_rules(app, message, name)
-                     
         if name.startswith("learn"):
                 return await get_learn(app, message, name)
-             
         if "_" in name:
             module = name.split("_", 1)[1]
             text = (_["main6"].format({HELPABLE[module].__MODULE__}
                 + HELPABLE[module].__HELP__)
             )
-
             await message.reply(text, disable_web_page_preview=True)
-
         if name == "help":
             text, keyb = await help_parser(message.from_user.first_name)
             await message.reply(_["main5"],reply_markup=keyb, disable_web_page_preview=True)
-
         if name == "connections":
             await message.reply("** Run /connections to view or disconnect from groups!**")
-
     else:
         await message.reply(f"""
-
 Hey there {message.from_user.mention}, 
 
 My name is {BOT_NAME} an  advanced telegram Group management Bot For helpYou Protect Your Groups & Suit For All Your Needs.feel free to add me to your groups! """,reply_markup=home_keyboard_pm)
-
         return await add_served_user(chat_id) 
 
 
-@app.on_message(filters.command(HELP_COMMAND))
+@app.on_message(filters.command("help"))
 @language
 async def help_command(client, message: Message, _):
-
     if message.chat.type != "private":
-
         if len(message.command) >= 2:
-
             name = (message.text.split(None, 1)[1]).replace(" ", "_").lower()
-
             if str(name) in HELPABLE:
-
                 key = InlineKeyboardMarkup(
                     [[InlineKeyboardButton(text=_["main3"], url=f"t.me/{BOT_USERNAME}?start=help_{name}")]])
-
                 await message.reply(_["main4"],reply_markup=key)
-
             else:
                 await message.reply(_["main2"], reply_markup=keyboard)
-
         else:
             await message.reply(_["main2"], reply_markup=keyboard)
-
     else:
         if len(message.command) >= 2:
-
             name = (message.text.split(None, 1)[1]).replace(" ", "_").lower()
-
             print(name)
-
             if str(name) in HELPABLE:
-
                 text = (_["main6"].format({HELPABLE[name].__MODULE__}
                 + HELPABLE[name].__HELP__))
-
                 if hasattr(HELPABLE[name], "__helpbtns__"):
-
                        button = (HELPABLE[name].__helpbtns__) + [[InlineKeyboardButton("Back", callback_data="bot_commands")]]
-
                 if not hasattr(HELPABLE[name], "__helpbtns__"): button = [[InlineKeyboardButton("Back", callback_data="bot_commands")]]
-
                 await message.reply(text,reply_markup=InlineKeyboardMarkup(button),disable_web_page_preview=True)
-
             else:
                 text, help_keyboard = await help_parser(message.from_user.first_name)
-
                 await message.reply(_["main5"],reply_markup=help_keyboard,disable_web_page_preview=True)
-
         else:
             text, help_keyboard = await help_parser(message.from_user.first_name)
-
             await message.reply(
                 text, reply_markup=help_keyboard, disable_web_page_preview=True
             )
-
     return
   
 @app.on_callback_query(filters.regex("startcq"))
