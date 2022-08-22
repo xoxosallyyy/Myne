@@ -103,12 +103,6 @@ async def start_bot():
             all_module += "•≫ Successfully imported:{:<15}.py".format(i)
         j += 1   
                 
-    print("Sending... Bot online stats to log")
-
-    await app.send_message(
-        chat_id = Config.LOG_GROUP_ID,
-        text = "Successfully started Rose Bot ✅")
-
     print(f"{all_module}")
 
     print("""
