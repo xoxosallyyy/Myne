@@ -196,7 +196,7 @@ async def promote_check_func(_, __, m):
 async def changeinfo_check_func(_, __, m):
     if isinstance(m, CallbackQuery):
         m = m.message
-    if m.chat.type != "supergroup":
+    if m.chat.type == "supergroup":
         await m.reply_text("This command is made to be used in groups not in pm!")
         return False
     if m.sender_chat:
