@@ -18,7 +18,7 @@ async def clone(_, message):
     try:
         await text.edit("Cloning your bot on my server please wait until cloning...")
                    # change this Directry according to ur repo
-        client = Client(":memory:", API_ID, API_HASH, bot_token=phone, plugins={"root": "plugins"})
+        client = Client(":memory:", API_ID, API_HASH, bot_token=phone, plugins={"root": "Rose.plugins"})
         await client.start()
         user = await client.get_me()
         await msg.reply(f"Your Client Has Been Successfully Started As @{user.username}!✅\n\nThanks for Cloning.")
