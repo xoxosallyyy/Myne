@@ -3,7 +3,7 @@ from Rose import app
 from Rose.mongo.antiservice import (
     antiservice_on,
     antiservice_off,
-    is_antiservice_on
+    is_antiservice
 )
 from Rose.utils.filter_groups import service
 from lang import get_command
@@ -37,7 +37,7 @@ async def anti_service(client, message: Message, _):
 async def delete_service(_, message):
     chat_id = message.chat.id
     try:
-        if await is_antiservice_on(chat_id):
+        if await is_antiservice(chat_id):
             return await message.delete()
     except Exception:
         pass
