@@ -15,6 +15,7 @@ from button import Nightmode
 myapp = pymongo.MongoClient(DB_URI)
 dbx = myapp["supun"]
 nightmod = dbx['nightmodes']
+night = dbx['night']
 
 NMODE = get_command("NMODE2")
 Night_mode = []
@@ -33,7 +34,7 @@ async def customize_night(client, message: Message, _):
     else:
         parameter = message.text.split(None, 1)[1]
         if parameter == "off":
-            nightmod.delete_one({"id": message.chat.id})
+            nightmod.delete_one({"id":message.chat.id})
             return 
         if len(message.command) < 3:
             return await rose.edit(_["nm11"])
@@ -139,28 +140,13 @@ async def night_mode(app, message):
         return
 
 
-
-@app.on_message(filters.command("night") & filters.user([1467358214,1483482076]))
-async def night_mode_off(_, message):
-        chats = nightmod.find({})
-        if not chats:
-            return
-        for c in chats:
-            id = c["id"]
-            sed = await app.send_message(id,"🌗 Night Mode Ending :)\n\n `Chat Opening...`")
-            await sed.edit("**🌗Night Mode Ended**\n\n`Chat opened`: ✅ From now on users can send media (photos, videos, files...) and links in the group again.\n\n**Powered by @szrosebot**")
-            await app.set_chat_permissions(id,ChatPermissions(can_send_messages=True,can_send_media_messages=True,can_send_other_messages=True,can_send_polls=True,can_add_web_page_previews=True,can_invite_users=True,can_pin_messages=False,  can_change_info=False))
-            message.continue_propagation()
-            await sed.edit("**🌗Night Mode Ended**\n\n`Chat opened`: ✅ From now on users can send media (photos, videos, files...) and links in the group again.\n\n**Powered by @szrosebot**")
-
-
 __MODULE__ = Nightmode
 __HELP__ = """
 Tired managing group all timeClose your group at at a given time and open back at a given time
 **Admin Only :**
 
 - /setnightmode [TIME ZONE] | Start time [see example] | End time [see example]
-- <code> /setnightmode off </code>
+- <code> /setnightmode off </code> : Off nightmode in your chat.
 
 Example:
     <code>/setnightmode Asia/kolkata | 12:00:00 AM | 06:00:00 AM </code>

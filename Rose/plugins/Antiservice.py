@@ -1,5 +1,5 @@
 from pyrogram import filters
-from Rose import app,dbn
+from Rose import app
 from Rose.mongo.antiservice import (
     antiservice_on,
     antiservice_off,

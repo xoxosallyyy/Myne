@@ -6,8 +6,7 @@ text = """
 **Formatting**
 
 Rose supports a large number of formatting 
-options to make your messages more expressive. Take a look!
-"""
+options to make your messages more expressive. Take a look!"""
 
 fbuttons = InlineKeyboardMarkup(
         [[
@@ -17,7 +16,7 @@ fbuttons = InlineKeyboardMarkup(
         [
         InlineKeyboardButton('Random Content', callback_data="_random")
         ],
-        [InlineKeyboardButton('« Back', callback_data='bot_commands')
+        [InlineKeyboardButton('Back', callback_data='bot_commands')
         ]]
   
 )
@@ -32,12 +31,13 @@ async def commands_callbacc(_, CallbackQuery):
 
 close = InlineKeyboardMarkup(
         [[
-            InlineKeyboardButton('« Back', callback_data='_mdownsl')
+            InlineKeyboardButton('Back', callback_data='_mdownsl')
         ]], 
 )
 
 tex = """
 <b>Markdown Formatting</b>
+
 You can format your message using bold, italics, underline,
 and much more.Go ahead and experiment!
 
@@ -58,12 +58,10 @@ If you would like to send buttons on the same row, use the :same formatting. EG:
 </code>
 
 This will show button 1 and 2 on the same line, with 3 underneath.
-Alternatively, check out <a href='http://www.supun.ml/rose.html'>This Web site</a> to generate the button syntax for yoctx.
 
 - [note button](buttonurl://#notename): This syntax will allow you to 
 create a button which links to a note. When clicked, 
-the user will be redirected to Rose's PM to see the note.
-"""
+the user will be redirected to Rose's PM to see the note."""
 
 
 @app.on_callback_query(filters.regex("_mdown"))
@@ -91,13 +89,16 @@ You can also customise the contents of your message with contextual data. For ex
 - `{count}` : get member count (welcome module only)
 
 **Example usages:**
+
 - Save a filter using the user's name.
 -> /filter test `{first}` triggered this filter.
+
 - Add a rules button to a note.
 -> /save info Press the button to read the chat rules! {rules}
+
 - Mention a user in the welcome message
--> /setwelcome Welcome `{mention}` to `{chatname}`!
-"""
+-> /setwelcome Welcome `{mention}` to `{chatname}`! """
+
 @app.on_callback_query(filters.regex("_fillings"))
 async def commands_callbacc(_, CallbackQuery):
     await CallbackQuery.message.edit(

@@ -1,108 +1,181 @@
 import asyncio
+
 import importlib
+
 import re
-from contextlib import closing, suppress
+
+from contextlib import (
+    closing,
+    suppress
+)
+
 from uvloop import install
 
-from pyrogram import errors
-from pyrogram import filters, idle,Client
-from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
+from pyrogram import ( 
+    filters, 
+    idle
+)
 
-from Rose import app,LOG_GROUP_ID,BOT_USERNAME,bot,BOT_NAME,aiohttpsession
+from pyrogram.types import (
+    InlineKeyboardButton,
+    InlineKeyboardMarkup, 
+    Message
+)
+
+from Rose import (
+    app,
+    BOT_USERNAME,
+    bot,
+    BOT_NAME,
+    aiohttpsession
+)
+
 from Rose.plugins import ALL_MODULES
+
 from Rose.utils import paginate_modules
+
 from lang import get_command
-from Rose.utils.lang import language,languageCB
-#from Rose.utils.commands import *
-# from Rose.mongo.rulesdb import *
-from Rose.utils.start import get_private_rules,get_learn
-#from Rose.utils.kbhelpers import *
-from Rose.mongo.usersdb import adds_served_user,add_served_user
-from Rose.mongo.restart import clean_restart_stage
+
+from Rose.utils.lang import (
+    language,
+    languageCB
+)
+
+from Rose.utils.start import (
+    get_private_rules,
+    get_learn
+)
+
+from Rose.mongo.usersdb import (
+    adds_served_user,
+    add_served_user
+)
+
 from Rose.mongo.chatsdb import add_served_chat
+
 from Rose.plugins.fsub import ForceSub
-from config import *
+
+from config import Config
+
 loop = asyncio.get_event_loop()
+
 flood = {}
 
 START_COMMAND = get_command("START_COMMAND")
+
 HELP_COMMAND = get_command("HELP_COMMAND")
+
 HELPABLE = {}
 
 async def start_bot():
+
     global HELPABLE
+
     for module in ALL_MODULES:
+
         imported_module = importlib.import_module("Rose.plugins." + module)
+
         if (
             hasattr(imported_module, "__MODULE__")
             and imported_module.__MODULE__
         ):
+
             imported_module.__MODULE__ = imported_module.__MODULE__
+
             if (
                 hasattr(imported_module, "__HELP__")
                 and imported_module.__HELP__
             ):
+
                 HELPABLE[
                     imported_module.__MODULE__.replace(" ", "_").lower()
                 ] = imported_module
+
     all_module = ""
+    
     j = 1
+
     for i in ALL_MODULES:
         if j == 1:
             all_module += "•≫ Successfully imported:{:<15}.py\n".format(i)
             j = 0
         else:
             all_module += "•≫ Successfully imported:{:<15}.py".format(i)
-        j += 1           
-    restart_data = await clean_restart_stage()
-    try:
-        if restart_data:
-            await app.edit_message_text(
-                restart_data["chat_id"],
-                restart_data["message_id"],
-                "**Restarted Successfully**",
-            )
+        j += 1   
+                
+    print("Sending... Bot online stats to log")
 
-        else:
-            await app.send_message(LOG_GROUP_ID, "Bot started!")
-    except Exception:
-        pass
+    await app.send_message(
+        chat_id = Config.LOG_GROUP_ID,
+        text = "Successfully started Rose Bot ✅")
+
     print(f"{all_module}")
+
     print("""
  _____________________________________________   
 |                                             |  
 |          Deployed Successfully              |  
 |         (C) 2021-2022 by @szteambots        | 
 |          Greetings from supun  :)           |
-|_____________________________________________|""")
+|_____________________________________________| """)
+
     await idle()
+
     await aiohttpsession.close()
+
     await app.stop()
+
     for task in asyncio.all_tasks():
         task.cancel() 
+    print("Bot gone offline ):")
 
 
 
 home_keyboard_pm = InlineKeyboardMarkup(
-    [[InlineKeyboardButton(text=" ➕ Add Me To Your Group ➕ ",url=f"http://t.me/{BOT_USERNAME}?startgroup=new",)],
-    [InlineKeyboardButton(text="About", callback_data="_about"),
-    InlineKeyboardButton(text="languages ", callback_data="_langs")],
-    [InlineKeyboardButton(text="Help", callback_data="bot_commands")],
-    [InlineKeyboardButton(text="Website", url=f"https://szrosebot.ml"),
-    InlineKeyboardButton(text="News Channel", url=f"https://t.me/szroseupdates")]])
+    [
+        [
+            InlineKeyboardButton(text=" ➕ Add Me To Your Group ➕ ",
+            url=f"http://t.me/{BOT_USERNAME}?startgroup=new")
+        ],
+        [
+            InlineKeyboardButton(text="About", 
+            callback_data="_about"),
+            InlineKeyboardButton(text="languages ", 
+            callback_data="_langs")
+        ],
+        [
+            InlineKeyboardButton(text="Help", 
+            callback_data="bot_commands")
+        ],
+        [
+            InlineKeyboardButton(text="Website", 
+            url=f"https://szrosebot.ml"),
+            InlineKeyboardButton(text="News Channel", 
+            url=f"https://t.me/szroseupdates")
+        ]
+    ]
+)
 
-keyboard = InlineKeyboardMarkup([[InlineKeyboardButton(text="📚 Commands & help", url=f"t.me/{BOT_USERNAME}?start=help")]])
+keyboard = InlineKeyboardMarkup(
+    [
+        [
+            InlineKeyboardButton(text="📚 Commands & help", 
+            url=f"t.me/{BOT_USERNAME}?start=help")
+        ]
+    ]
+)
 
 @app.on_message(filters.command(START_COMMAND))
 @language
 async def start(client, message: Message, _):
     chat_id = message.chat.id
-    #User can't see start message without join channel...
+    
+    print(chat_id)
 
     FSub = await ForceSub(bot, message)
     if FSub == 400:
         return
-    #If user start bot on chat(group) this will display
+
     if message.chat.type != "private":
         await message.reply(_["main2"], reply_markup=keyboard)
         await adds_served_user(chat_id)     
@@ -111,6 +184,8 @@ async def start(client, message: Message, _):
     if len(message.text.split()) > 1:
 
         name = (message.text.split(None, 1)[1]).lower()
+
+        print(name)
 
         if name.startswith("rules"):
                 return await get_private_rules(app, message, name)
@@ -123,6 +198,7 @@ async def start(client, message: Message, _):
             text = (_["main6"].format({HELPABLE[module].__MODULE__}
                 + HELPABLE[module].__HELP__)
             )
+
             await message.reply(text, disable_web_page_preview=True)
 
         if name == "help":
@@ -170,6 +246,8 @@ async def help_command(client, message: Message, _):
 
             name = (message.text.split(None, 1)[1]).replace(" ", "_").lower()
 
+            print(name)
+
             if str(name) in HELPABLE:
 
                 text = (_["main6"].format({HELPABLE[name].__MODULE__}
@@ -200,10 +278,13 @@ async def help_command(client, message: Message, _):
 @app.on_callback_query(filters.regex("startcq"))
 @languageCB
 async def startcq(client,CallbackQuery, _):
-    await CallbackQuery.message.edit(text=f"""
+    await CallbackQuery.message.edit(
+        text=f"""
 Hey there {CallbackQuery.from_user.mention}, 
 
-My name is Rose an  advanced telegram Group management Bot For helpYou Protect Your Groups & Suit For All Your Needs.feel free to add me to your groups! """,disable_web_page_preview=True,reply_markup=home_keyboard_pm)
+My name is Rose an  advanced telegram Group management Bot For helpYou Protect Your Groups & Suit For All Your Needs.feel free to add me to your groups! """,
+        disable_web_page_preview=True,
+        reply_markup=home_keyboard_pm)
 
 
 async def help_parser(name, keyboard=None):
@@ -244,7 +325,9 @@ async def help_button(client, query, _):
     top_text = _["main5"]
 
     if mod_match:
+
         module = (mod_match.group(1)).replace(" ", "_")
+
         text = (
             "{} **{}**:\n".format(
                 "Here is the help for", HELPABLE[module].__MODULE__

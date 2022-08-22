@@ -468,35 +468,6 @@ async def messages(client, message):
     except:
         message.continue_propagation()        
     
-@pbot.on_message(filters.edited & ~filters.private  & ~filters.linked_channel & ~filters.bot)
-async def edt(client, message):
-    if not message.chat:
-      return   
-    if lockdb.find_one({"edit": message.chat.id}):
-        pass
-    else:
-        message.continue_propagation()
-    try:
-        if len(await member_permissions(message.chat.id, message.from_user.id)) > 1:
-            return
-    except:
-        pass
-    approved_users = Approve(message.chat.id).list_approved()
-    chats = [user[0] for user in approved_users]
-    for c in chats:
-        if message.from_user.id == int(c):
-            return     
-    try:
-        try:
-         await message.delete()
-         supun = await app.send_message(chat_id = message.chat.id,text = del_message.format(message.from_user.mention,"Edited","Edited"))
-         await asyncio.sleep(5)
-         await supun.delete() 
-        except:
-             message.continue_propagation()
-    except:
-        message.continue_propagation()     
-
 @pbot.on_message(filters.incoming  & ~filters.private & ~filters.linked_channel & ~filters.bot)
 async def mnsn(client, message):
     if not message.chat:

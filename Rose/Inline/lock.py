@@ -3,6 +3,7 @@ from pyrogram import filters
 from pyrogram.types import InlineKeyboardButton,InlineKeyboardMarkup
 
 supunma = """
+
 **Basic Locktypes available for a chat: **
 
 video

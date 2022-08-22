@@ -2,23 +2,19 @@ from Rose.utils.custom_filters import (
     admin_filter,
     promote_filter,
     restrict_filter,
-    can_change_filter,
-    owner_filter
+    can_change_filter
 )
 from pyrogram import filters
 from pyrogram.types import Message
 from Rose.utils.caching import ADMIN_CACHE, TEMP_ADMIN_CACHE_BLOCK, admin_cache_reload
 from Rose.utils.parser import mention_html
-from asyncio import sleep
 import os
 from Rose import BOT_ID, app
 from Rose.utils.functions import extract_user
-from Rose.utils.commands import command
 from Rose.utils.lang import language
-from pyrogram.errors import FloodWait,UserAdminInvalid
 from button import Admin
 
-@app.on_message(command("send") & admin_filter)
+@app.on_message(filters.command("send") & admin_filter)
 @language
 async def sendasbot(client, message: Message, _):
     await message.delete()
@@ -136,7 +132,7 @@ async def demote(_, message: Message):
     umention = (await app.get_users(user_id)).mention
     await message.reply_text(f"Demoted! {umention} 🤙🏻")
 
-@app.on_message(command("banghost") & restrict_filter)
+@app.on_message(filters.command("banghost") & restrict_filter)
 @language
 async def ban_deleted_accounts(client, message: Message, _):
     chat_id = message.chat.id
@@ -157,7 +153,7 @@ async def ban_deleted_accounts(client, message: Message, _):
     else:
         await m.edit(_["admin6"])
 
-@app.on_message(command("setgrouptitle") & can_change_filter)
+@app.on_message(filters.command("setgrouptitle") & can_change_filter)
 @language
 async def set_chat_title(client, message: Message, _):
     if len(message.command) < 2:
@@ -167,7 +163,7 @@ async def set_chat_title(client, message: Message, _):
     await message.chat.set_title(new_title)
     await message.reply_text(_["admin24"].format(old_title,new_title))
 
-@app.on_message(command("settitle") & can_change_filter)
+@app.on_message(filters.command("settitle") & can_change_filter)
 @language
 async def set_user_title(client, message: Message, _):
     if not message.reply_to_message:
@@ -182,7 +178,7 @@ async def set_user_title(client, message: Message, _):
     await app.set_administrator_title(chat_id, from_user.id, title)
     await message.reply_text(_["admin28"].format(from_user.mention,title))
 
-@app.on_message(command("setusername") & can_change_filter)
+@app.on_message(filters.command("setusername") & can_change_filter)
 @language
 async def set_group_username(client, message: Message, _):
     chat_id = message.chat.id
@@ -196,7 +192,7 @@ async def set_group_username(client, message: Message, _):
     except Exception as ef:
         await message.reply_text(ef)
 
-@app.on_message(command("setgrouppic") & can_change_filter)
+@app.on_message(filters.command("setgrouppic") & can_change_filter)
 @language
 async def set_chat_photo(client, message: Message, _):
     reply = message.reply_to_message
@@ -213,7 +209,7 @@ async def set_chat_photo(client, message: Message, _):
     os.remove(photo)
 
 
-@app.on_message(command("admins"))
+@app.on_message(filters.command("admins"))
 async def adminlist_show(_, m: Message):
     global ADMIN_CACHE
     try:
@@ -260,7 +256,7 @@ async def adminlist_show(_, m: Message):
 
 
 
-@app.on_message(filters.group & command("reload"))
+@app.on_message(filters.group & filters.command("reload"))
 async def reload_admins(_, message: Message):
     global TEMP_ADMIN_CACHE_BLOCK
     if message.chat.type != "supergroup":
@@ -272,7 +268,7 @@ async def reload_admins(_, message: Message):
         TEMP_ADMIN_CACHE_BLOCK[message.chat.id] = "manualblock"
         await message.reply_text("Admin list reloaded !")
     except Exception as ef:
-        await message.reply_text(f"{ef}")
+        await message.reply_text(ef)
     return
 
 
