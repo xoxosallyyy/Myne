@@ -27,6 +27,7 @@ logger.setLevel(logging.ERROR)
 async def addconnection(client, message: Message, _):
     userid = message.from_user.id if message.from_user else None
     chat_id = message.chat.id
+    group_id = message.chat.id
     if not userid:
         return await message.reply(_["connection1"].format(chat_id))
     chat_type = message.chat.type
