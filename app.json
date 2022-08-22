@@ -59,6 +59,14 @@
         "COMMAND_PREFIXES": {
             "description": "now you can set custom command handler for rose like : / ! ,",
             "required": true
+        },
+        "OWNER_ID": {
+            "description": "Your telegram user id",
+            "required": true
+        },
+        "F_SUB_CHANNEL": {
+            "description": "The Telegram channel id you want focus user.",
+            "required": true
         }
     }
 }
