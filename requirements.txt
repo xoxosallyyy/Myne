@@ -19,3 +19,4 @@ telegraph==2.1.0
 pyrogram
 pyyaml==5.4
 apscheduler
+telegraph[aio]
