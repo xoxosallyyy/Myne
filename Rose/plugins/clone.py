@@ -1,5 +1,4 @@
 from Rose import app
-from Rose.utils.commands import *
 import os
 import re
 import asyncio
@@ -16,14 +15,14 @@ async def clone(bot, msg: Message):
     cmd = msg.forward
     phone = msg.text.split(" ", maxsplit=2)[1]
     try:
-        await text.edit("Cloning your bot on my server please wait until cloning...")
+        await text.edit("ᴄʟᴏɴɪɴɢ ʏᴏᴜʀ ʙᴏᴛ ᴏɴ ᴍʏ sᴇʀᴠᴇʀ ᴘʟᴇᴀsᴇ ᴡᴀɪᴛ ᴜɴᴛɪʟ ᴄʟᴏɴɪɴɢ...")
                    # change this Directry according to ur repo
-        client = Client(":memory:", API_ID, API_HASH, bot_token=phone, plugins={"root": "Rose.plugins"})
+        client = Client(":memory:", API_ID, API_HASH, bot_token=phone, plugins={"root": "Rose"})
         await client.start()
         user = await client.get_me()
-        await msg.reply(f"Your Client Has Been Successfully Started As @{user.username}!✅\n\nThanks for Cloning.")
+        await msg.reply(f"ʏᴏᴜʀ ᴄʟɪᴇɴᴛ ʜᴀs ʙᴇᴇɴ sᴜᴄᴄᴇssғᴜʟʟʏ sᴛᴀʀᴛᴇᴅ ᴀs @{user.username}! ✅\n\nᴛʜᴀɴᴋs ғᴏʀ ᴄʟᴏɴɪɴɢ.")
     except Exception as e:
-        await msg.reply(f"**ERROR:** `{str(e)}`\nPress /start to Start again.")
+        await msg.reply(f"**ᴇʀʀᴏʀ:** `{str(e)}`\nPress /start to Start again.")
 
 __MODULE__ = "Clone"
 __HELP__ = """  
