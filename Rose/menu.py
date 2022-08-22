@@ -5,45 +5,25 @@ from Rose.utils.lang import *
 
 
 fbuttons = InlineKeyboardMarkup(
-        [[
-            InlineKeyboardButton(text="💬 Support Group", url="https://t.me/szrosesupport"),
-            InlineKeyboardButton(text="🔔 News Channel", url="https://t.me/Theszrosebot")
-          ], 
-          [ 
-            InlineKeyboardButton(text="📦 Source Code", url="https://github.com/szsupunma/sz-rosebot"),
-            InlineKeyboardButton(text="🗂 Documentation", url="https://szsupunma.gitbook.io/rose-bot")
-          ], 
-          [
-            InlineKeyboardButton("Back", callback_data='startcq')
-          ]]
-)
+        [[InlineKeyboardButton(text="💬 Support Group", url="https://t.me/szrosesupport"),
+          InlineKeyboardButton(text="🔔 News Channel", url="https://t.me/Theszrosebot")], 
+        [ InlineKeyboardButton(text="📦 Source Code", url="https://github.com/szsupunma/sz-rosebot"),
+          InlineKeyboardButton(text="🗂  Documentation", url="https://szsupunma.gitbook.io/rose-bot")], 
+        [InlineKeyboardButton("Back", callback_data='startcq')]])
 
 keyboard =InlineKeyboardMarkup(
-    [[
-        InlineKeyboardButton(text="🇱🇷 English", callback_data="languages_en")
-      ],
-      [
-        InlineKeyboardButton(text="🇱🇰 සිංහල", callback_data="languages_si"), 
-        InlineKeyboardButton(text="🇮🇳 हिन्दी", callback_data="languages_hi")
-      ], 
-      [
-        InlineKeyboardButton(text="🇮🇹 Italiano", callback_data="languages_it"), 
-        InlineKeyboardButton(text="🇮🇳 తెలుగు", callback_data="languages_ta")
-      ], 
-      [  
-        InlineKeyboardButton(text="🇮🇩 Indonesia", callback_data="languages_id"), InlineKeyboardButton(text="🇦🇪 عربي", callback_data="languages_ar")
-      ], 
-      [
-        InlineKeyboardButton(text="🇮🇳 മലയാളം", callback_data="languages_ml"), 
-        InlineKeyboardButton(text="🇲🇼 Chichewa", callback_data="languages_ny")], 
-      [
-        InlineKeyboardButton(text="🇩🇪 German", callback_data="languages_ge"), 
-        InlineKeyboardButton(text="🇷🇺 Russian", callback_data="languages_ru")
-      ], 
-      [   
-        InlineKeyboardButton("Back", callback_data='startcq')
-      ]]
-)
+    [[InlineKeyboardButton(text="🇱🇷 English", callback_data="languages_en")],
+     [InlineKeyboardButton(text="🇱🇰 සිංහල", callback_data="languages_si"), 
+      InlineKeyboardButton(text="🇮🇳 हिन्दी", callback_data="languages_hi")], 
+     [InlineKeyboardButton(text="🇮🇹 Italiano", callback_data="languages_it"), 
+      InlineKeyboardButton(text="🇮🇳 తెలుగు", callback_data="languages_ta")], 
+     [InlineKeyboardButton(text="🇮🇩 Indonesia", callback_data="languages_id"), 
+      InlineKeyboardButton(text="🇦🇪 عربي", callback_data="languages_ar")], 
+     [InlineKeyboardButton(text="🇮🇳 മലയാളം", callback_data="languages_ml"), 
+      InlineKeyboardButton(text="🇲🇼 Chichewa", callback_data="languages_ny")], 
+     [InlineKeyboardButton(text="🇩🇪 German", callback_data="languages_ge"), 
+      InlineKeyboardButton(text="🇷🇺 Russian", callback_data="languages_ru")], 
+     [InlineKeyboardButton("« Back", callback_data='startcq')]])
 
 @app.on_callback_query(filters.regex("_langs"))
 @languageCB
