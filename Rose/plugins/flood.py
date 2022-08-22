@@ -21,7 +21,7 @@ def reset_flood(chat_id, user_id=0):
         if user != user_id:
             DB[chat_id][user] = 0
 
-@app.on_message(~filters.service & ~filters.me & ~filters.private & ~filters.channel & ~filters.bot & ~filters.edited, group=flood_group)
+@app.on_message(~filters.service & ~filters.me & ~filters.private & ~filters.channel & ~filters.bot , group=flood_group)
 async def flood_control_func(_, message: Message):
     if not message.chat:
         return

@@ -27,7 +27,7 @@ SUPPORTED_TYPES = ["jpeg", "png", "webp"]
 STICKER_DIMENSIONS = (512, 512)
 
 
-@app.on_message(filters.command("stickerid") & ~filters.edited)
+@app.on_message(filters.command("stickerid"))
 async def sticker_id(_, message: Message):
     reply = message.reply_to_message
     if not reply:
@@ -36,7 +36,7 @@ async def sticker_id(_, message: Message):
         return await message.reply("Reply to a sticker.")
     await message.reply_text(f"`{reply.sticker.file_id}`")
 
-@app.on_message(filters.command("getsticker") & ~filters.edited)
+@app.on_message(filters.command("getsticker"))
 async def sticker_image(_, message: Message):
     reply = message.reply_to_message
     if not reply:
@@ -128,7 +128,7 @@ async def get_document_from_file_id(
     decoded = FileId.decode(file_id)
     return raw.types.InputDocument(id=decoded.media_id,access_hash=decoded.access_hash,file_reference=decoded.file_reference)
 
-@app.on_message(filters.command("kang") & ~filters.edited)
+@app.on_message(filters.command("kang"))
 async def kang(client, message: Message):
     if not message.reply_to_message:
         return await message.reply_text("Reply to a sticker/image to kang it.")
@@ -221,7 +221,7 @@ async def kang(client, message: Message):
         await message.reply_text("The sticker png dimensions are invalid.")
 
 
-""" @app.on_message(filters.command("webss") & ~filters.edited)
+""" @app.on_message(filters.command("webss"))
 async def take_ss(_, message: Message):
     if len(message.command) < 2:
         return await eor(message, text="Give A Url To Fetch Screenshot.")

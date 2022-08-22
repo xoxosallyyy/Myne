@@ -6,7 +6,7 @@ from Rose.utils.commands import command
 from Rose.utils.custom_filters import admin_filter
 from button import Reports
 
-@app.on_message(command("reports") & ~filters.edited & admin_filter)
+@app.on_message(command("reports")  & admin_filter)
 async def report_setting(_, m: Message):
     args = m.text.split()
     db = Reporting(m.chat.id)
@@ -45,7 +45,6 @@ Tochange this setting, try this command again, with one of the following args: `
             filters.command("report")
             | filters.command(["admins", "admin"], prefixes="@")
     )
-    & ~filters.edited
     & ~filters.private
 )
 async def report_user(_, message):
