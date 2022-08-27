@@ -9,7 +9,7 @@ from lang import get_command
 from Rose.utils.commands import command
 from Rose.utils.lang import language
 from Rose.utils.custom_filters import restrict_filter
-from button import Extra
+from button import Captcha
 
 CAPTCH = get_command("CAPTCH")
 REMOVEC = get_command("REMOVEC")
@@ -86,7 +86,7 @@ async def del_chat(client, message: Message, _):
         if j:
             await message.reply_text(_["capt3"])
 
-__MODULE__ = Extra
+__MODULE__ = Captcha
 __HELP__ = f"""
 **Commands:**
  - /id: Get the id of user or chat.
