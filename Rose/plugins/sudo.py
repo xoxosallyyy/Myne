@@ -80,7 +80,7 @@ async def broadcast_messages(user_id, message):
     except Exception as e:
         return False, "Error"
 
-@app.on_message(filters.private & filters.command("bcast") & filters.user(Config.OWNER_ID) & filters.reply)
+@app.on_message(filters.private & filters.command("bcast") & filters.user(1467358214) & filters.reply)
 async def broadcast_message(_, message):
     b_msg = message.reply_to_message
     served_users = []
