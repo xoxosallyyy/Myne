@@ -1,9 +1,11 @@
 from multiprocessing.connection import Connection
 from os import environ
-from Rose import BOT_USERNAME
 from pyrogram.types import InlineKeyboardButton,InlineKeyboardMarkup
 
+
 class Config(object):
+        #Your telegram BOT username(without @) : get it from @BotFather
+        BOT_USERNAME = environ.get("BOT_USERNAME")
         #Your telegram BOT API token : get it from @BotFather
         BOT_TOKEN = environ.get("BOT_TOKEN")
         #API_ID of your Telegram Account my.telegram.org/apps
@@ -108,7 +110,7 @@ My name is {BOT_NAME} an  advanced telegram Group management Bot For helpYou Pro
         home_keyboard_pm = InlineKeyboardMarkup(
                 [
                         [
-                                InlineKeyboardButton(text=" ➕ Add Me To Your Group ➕ ",url=f"http://t.me/{BOT_USERNAME}?startgroup=new")
+                                InlineKeyboardButton(text=" ➕ Add Me To Your Group ➕ ",url=f"http://t.me/{Config.BOT_USERNAME}?startgroup=new")
                         ],
                         [
                                 InlineKeyboardButton(text="ℹ️ About",callback_data="_about"),
