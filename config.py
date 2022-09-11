@@ -34,6 +34,8 @@ class Config(object):
         COMMAND_PREFIXES = environ.get("COMMAND_PREFIXES")
         #The Telegram channel id you want focus user.(User can't start your bot without join it)
         F_SUB_CHANNEL = environ.get("F_SUB_CHANNEL")
+        SUPPORT_CHAT = os.environ.get("SUPPORT_CHAT", "szrosesupport")
+        BUG_IMG = os.environ.get("START_IMG", "https://te.legra.ph/file/2a16d0234038443a4748c.jpg")
 
 class var(object):
         #Rose group start message here 
