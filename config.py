@@ -52,7 +52,7 @@ have a look at my [Docs](https://szsupunma.gitbook.io/rose-bot/), or head to @sz
         pm_start_text = """
 Hey there {}, 
 
-My name is {BOT_NAME} an  advanced telegram Group management Bot For helpYou Protect Your Groups & Suit For All Your Needs.feel free to add me to your groups! """
+My name is {} an  advanced telegram Group management Bot For helpYou Protect Your Groups & Suit For All Your Needs.feel free to add me to your groups! """
         #Languages change text menu here 
         lang_text = "Choose Your languages"
 
