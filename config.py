@@ -1,3 +1,4 @@
+import os
 from multiprocessing.connection import Connection
 from os import environ
 from pyrogram.types import InlineKeyboardButton,InlineKeyboardMarkup
@@ -18,6 +19,7 @@ class Config(object):
         API_HASH1 = environ.get("API_HASH1")
         #Your telegram user id
         OWNER_ID = environ.get("OWNER_ID")
+        OWNER_USERNAME = os.environ.get("OWNER_USERNAME", "supunma") 
         #For logs channel to note down important bot level events, recommend to make this public. ex: '-123456'
         LOG_GROUP_ID = environ.get("LOG_GROUP_ID")
         #Get From Here.https://www.mongodb.com/ (Same as MONGO_URL but give differant value for this) 
