@@ -5,9 +5,7 @@ from googletrans import Translator
 from Rose import app,BOT_ID
 from Rose.utils.filter_groups import cbot
 from lang import get_command
-from Rose.utils.lang import language
 from Rose.mongo import chatb
-from Rose.plugins.antlangs import get_arg
 from Rose.utils.custom_filters import admin_filter
 from button import Chat_Bot
 from Rose import eor
@@ -38,7 +36,6 @@ async def chat_bot_toggle(db, message: Message):
 
 
 @app.on_message(filters.command("chatbot"))
-@language
 @capture_err
 async def chatbot(client, message: Message, _):
     if len(message.command) != 2:
