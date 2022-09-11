@@ -5,7 +5,7 @@ from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 
 from config import OWNER_ID
 from config import OWNER_USERNAME as uWu
-from Rose import SUPPORT_CHAT, app
+from Rose import SUPPORT_CHAT, BUG_IMG, app
 from Rose.core.decorators.errors import capture_err
 from button import Bug_Report
 
