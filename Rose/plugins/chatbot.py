@@ -11,6 +11,7 @@ from Rose.plugins.antlangs import get_arg
 from Rose.utils.custom_filters import admin_filter
 from button import Chat_Bot
 from Rose import eor
+from Rose.core.decorators.errors import capture_err
 
 tr = Translator()
 CBOT = get_command("CBOT")
@@ -34,8 +35,6 @@ async def chat_bot_toggle(db, message: Message):
         await eor(message, text="ChatBot Is Already Disabled.")
     else:
         await eor(message, text="**Usage:**\n/chatbot [ENABLE|DISABLE]")
-
-
 
 
 @app.on_message(filters.command("chatbot"))
