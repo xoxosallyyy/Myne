@@ -50,9 +50,8 @@ have a look at my [Docs](https://szsupunma.gitbook.io/rose-bot/), or head to @sz
         Connection_text_start = "** Run /connections to view or disconnect from groups!**"
         #Rose private start message here
         pm_start_text = """
-Hey there {}, 
-
-My name is {} an  advanced telegram Group management Bot For helpYou Protect Your Groups & Suit For All Your Needs.feel free to add me to your groups! """
+Hey there {},my name is {}
+An  advanced telegram Group management Bot For helpYou Protect Your Groups & Suit For All Your Needs.feel free to add me to your groups! """
         #Languages change text menu here 
         lang_text = "Choose Your languages"
 
@@ -99,7 +98,7 @@ My name is {} an  advanced telegram Group management Bot For helpYou Protect You
                                 InlineKeyboardButton(text="📓 Documentation", url="https://szsupunma.gitbook.io/rose-bot")
                         ], 
                         [
-                                InlineKeyboardButton(text="🖥 How To Deploy Me", url="https://szsupunma.gitbook.io/rose-bot")
+                                InlineKeyboardButton(text="🖥 How To Deploy Me", url="https://youtu.be/ZUvFSU8W7VA")
                         ],
                         [
                                 InlineKeyboardButton("« Back", callback_data='startcq')
@@ -110,18 +109,18 @@ My name is {} an  advanced telegram Group management Bot For helpYou Protect You
         home_keyboard_pm = InlineKeyboardMarkup(
                 [
                         [
-                                InlineKeyboardButton(text=" ➕ Add Me To Your Group ➕ ",url=f"http://t.me/{Config.BOT_USERNAME}?startgroup=new")
+                                InlineKeyboardButton(text="Add Me To Your Chat 🎉",url=f"http://t.me/{Config.BOT_USERNAME}?startgroup=new")
                         ],
                         [
-                                InlineKeyboardButton(text="ℹ️ About",callback_data="_about"),
-                                InlineKeyboardButton(text="🌍 languages ",callback_data="_langs")
+                                InlineKeyboardButton(text="About ✨",callback_data="_about"),
+                                InlineKeyboardButton(text="languages 🌏",callback_data="_langs")
                         ],
                         [
-                                InlineKeyboardButton(text="⚒ Help",callback_data="bot_commands")
+                                InlineKeyboardButton(text="Help Menu ⚒",callback_data="bot_commands")
                         ],
                         [
-                                InlineKeyboardButton(text="Website",url=f"https://szrosebot.ml"),
-                                InlineKeyboardButton(text="News Channel",url=f"https://t.me/szroseupdates")
+                                InlineKeyboardButton(text="Website 💭",url=f"https://szrosebot.ml"),
+                                InlineKeyboardButton(text="News Channel 📢",url=f"https://t.me/szroseupdates")
                         ]
                 ]
 )
