@@ -17,7 +17,7 @@ CBOT = get_command("CBOT")
 CBOTA = get_command("CBOTA")
 
 
-@app.on_message(filters.command("CBOT") & ~filters.private & admin_filter)
+@app.on_message(filters.command("CBOT") & ~filters.private)
 @language
 async def cbots(client, message: Message, _):
     group_id = str(message.chat.id)
@@ -41,8 +41,8 @@ async def cbots(client, message: Message, _):
         return await sex.edit(_["chatb1"])
     await sex.edit(f"✅ **Successfully** `{'Enabled' if lower_args=='on' else 'Disabled'}` ** Chat bot**")
 
-@app.on_message(filters.text & filters.reply & ~filters.bot & ~filters.via_bot & ~filters.forwarded & ~filters.private , group=cbot)
-async def szcbot(_, message: Message):
+@app.on_message(filters.text & filters.reply & ~filters.bot & ~filters.via_bot & ~filters.forwarded & ~filters.private, group=cbot)
+async def cbot(_, message: Message):
     chat_id = message.chat.id
     if not message.reply_to_message:
         return
