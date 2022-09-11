@@ -10,7 +10,7 @@ from Rose.mongo import chatb
 from Rose.plugins.antlangs import get_arg
 from Rose.utils.custom_filters import admin_filter
 from button import Chat_Bot
-
+from Rose import eor
 
 tr = Translator()
 CBOT = get_command("CBOT")
