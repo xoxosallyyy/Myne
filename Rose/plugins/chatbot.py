@@ -41,7 +41,7 @@ async def chatbot(client, message: Message, _):
         return await sex.edit(_["chatb1"])
     await sex.edit(f"✅ **Successfully** `{'Enabled' if lower_args=='on' else 'Disabled'}` ** Chat bot**")
 
-@app.on_message(filters.text & filters.reply & ~filters.bot & ~filters.via_bot & ~filters.forwarded & group=cbot)
+@app.on_message(filters.text & filters.reply & ~filters.bot & ~filters.via_bot & ~filters.forwarded & ~filters.private, group=cbot)
 async def cbot(_, message: Message):
     chat_id = message.chat.id
     if not message.reply_to_message:
