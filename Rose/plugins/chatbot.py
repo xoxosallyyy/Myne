@@ -17,7 +17,7 @@ CBOT = get_command("CBOT")
 CBOTA = get_command("CBOTA")
 
 
-@app.on_message(filters.command(CBOT) & ~filters.private & admin_filter)
+@app.on_message(filters.command("CBOT") & ~filters.private & admin_filter)
 @language
 async def cbots(client, message: Message, _):
     group_id = str(message.chat.id)
