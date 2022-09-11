@@ -16,30 +16,36 @@ tr = Translator()
 CBOT = get_command("CBOT")
 CBOTA = get_command("CBOTA")
 
+active_chats_bot = []
+
+async def chat_bot_toggle(db, message: Message):
+    status = message.text.split(None, 1)[1].lower()
+    chat_id = message.chat.id
+    if status == "enable":
+        if chat_id not in db:
+            db.append(chat_id)
+            text = "Chatbot Enabled!"
+            return await eor(message, text=text)
+        await eor(message, text="ChatBot Is Already Enabled.")
+    elif status == "disable":
+        if chat_id in db:
+            db.remove(chat_id)
+            return await eor(message, text="Chatbot Disabled!")
+        await eor(message, text="ChatBot Is Already Disabled.")
+    else:
+        await eor(message, text="**Usage:**\n/chatbot [ENABLE|DISABLE]")
+
+
+
 
 @app.on_message(filters.command("chatbot"))
 @language
+@capture_err
 async def chatbot(client, message: Message, _):
-    group_id = str(message.chat.id)
-    chat_id = message.chat.id
-    user_id = message.from_user.id
-    user = await app.get_chat_member(group_id, user_id)
-    if not user.status == "creator" or user.status == "administrator":
-        return
-    if len(message.command) < 2:
-        return await message.reply_text(_["chatb1"])
-    status = message.text.split(None, 1)[1].strip()
-    status = status.lower()
-    args = get_arg(message)
-    sex = await message.reply_text(_["antil2"])
-    lower_args = args.lower()
-    if lower_args == "on":
-        chatb.insert_one({f"chatbot": group_id})
-    elif lower_args == "off":
-        chatb.delete_one({f"chatbot": group_id})
-    else:
-        return await sex.edit(_["chatb1"])
-    await sex.edit(f"✅ **Successfully** `{'Enabled' if lower_args=='on' else 'Disabled'}` ** Chat bot**")
+    if len(message.command) != 2:
+        return await eor(message, text="**Usage:**\n/chatbot [ENABLE|DISABLE]")
+    await chat_bot_toggle(active_chats_bot, message)
+
 
 @app.on_message(filters.text & filters.reply & ~filters.bot & ~filters.via_bot & ~filters.forwarded & ~filters.private, group=cbot)
 async def cbot(_, message: Message):
