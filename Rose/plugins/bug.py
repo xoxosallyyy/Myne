@@ -3,9 +3,9 @@ from datetime import datetime
 from pyrogram import filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 
-from config import OWNER_ID
+from config import OWNER_ID, SUPPORT_CHAT, BUG_IMG
 from config import OWNER_USERNAME as uWu
-from Rose import SUPPORT_CHAT, BUG_IMG, app
+from Rose import app
 from Rose.core.decorators.errors import capture_err
 from button import Bug_Report
 
