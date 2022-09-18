@@ -2,7 +2,7 @@
 <h1 align="center"><b>Myne マイン ✨</b></h1>
 <img src="https://image.krasview.ru/video/b926a4a8b69b33f/_.jpg"
      
-<h4 align="center">Myne bot  simplifies the management, administration and security of your group</h4>
+<h2 align="center">Myne bot  simplifies the management, administration and security of your group</h4>
 
 <p align="center">
     <img src="https://img.shields.io/github/license/xoxosallyyy/Myne?style=for-the-badge&logo=appveyor" alt="LICENSE">
