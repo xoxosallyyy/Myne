@@ -1,30 +1,29 @@
 <p align="center">
-      <img style="width:100px; height: 100px;"  src="https://telegra.ph/file/c823fea618f6c024e75a9.png"></p>
-<h1 align="center"><b>Rose bot ✨</b></h1>
+<h1 align="center"><b>Myne bot ✨</b></h1>
 <h2 align="center"><b>The Telegram Bot to manage and protect groups</b></h2>
-<h4 align="center">Rose bot  simplifies the management, administration and security of your group</h4>
+<h4 align="center">Myne bot  simplifies the management, administration and security of your group</h4>
 
 <p align="center">
-    <img src="https://img.shields.io/github/license/szsupunma/sz-rosebot?style=for-the-badge&logo=appveyor" alt="LICENSE">
-    <img src="https://img.shields.io/github/contributors/szsupunma/sz-rosebot?style=for-the-badge&logo=appveyor" alt="Contributors">
-    <img src="https://img.shields.io/github/repo-size/szsupunma/sz-rosebot?style=for-the-badge&logo=appveyor" alt="Repository Size"> <br>
-    <img src="https://img.shields.io/github/issues/szsupunma/sz-rosebot?style=for-the-badge&logo=appveyor" alt="Issues">
-    <img src="https://img.shields.io/github/forks/szsupunma/sz-rosebot?style=for-the-badge&logo=appveyor" alt="Forks">
-    <img src="https://img.shields.io/github/stars/szsupunma/sz-rosebot?style=for-the-badge&logo=appveyor" alt="Stars">
+    <img src="https://img.shields.io/github/license/xoxosallyyy/Myne?style=for-the-badge&logo=appveyor" alt="LICENSE">
+    <img src="https://img.shields.io/github/contributors/xoxosallyyy/Myne?style=for-the-badge&logo=appveyor" alt="Contributors">
+    <img src="https://img.shields.io/github/repo-size/xoxosallyyy/Myne?style=for-the-badge&logo=appveyor" alt="Repository Size"> <br>
+    <img src="https://img.shields.io/github/issues/xoxosallyyy/Myne?style=for-the-badge&logo=appveyor" alt="Issues">
+    <img src="https://img.shields.io/github/forks/xoxosallyyy/Myne?style=for-the-badge&logo=appveyor" alt="Forks">
+    <img src="https://img.shields.io/github/stars/xoxosallyyy/Myne/sz-rosebot?style=for-the-badge&logo=appveyor" alt="Stars">
     <img href="https://crowdin.com/project/szrosebot" src="https://badges.crowdin.net/szrosebot/localized.svg" alt="crowndin"> 
 </p>
 
-## What is Rose for ?
+## What is Myne for ?
 
-Have you ever received Telegram in your group **spam, adder, flood,** people who send link, channel message, promoting, arabic ? Rose Bot is the automatic moderator that manages your Telegram group and punishes malicious users automatically for you.
+Have you ever received Telegram in your group **spam, adder, flood,** people who send link, channel message, promoting, arabic ? Myne Bot is the automatic moderator that manages your Telegram group and punishes malicious users automatically for you.
 
 ## How does She work?
 
-Just add Rose Bot to your group as an administrator and configure it with the command /help. It will be ready to protect the your group from spam, flood and attacks. You can set banned words so that the ban or mute of a user in the group when sent.
+Just add Myne Bot to your group as an administrator and configure it with the command /help. It will be ready to protect the your group from spam, flood and attacks. You can set banned words so that the ban or mute of a user in the group when sent.
 There is an anti-porn filter to be enabled to automatically delete and punish those who send pornographic content in your group.
 You can adjust all kinds of punishments including message deletion, user ban, user mute etc. There is a captcha check to prevent the entry of VoIP users who automatically spam your group. You can set <b> filters|note|rules|welcome </b> message also for your group.
 
-## Main Rose functions
+## Main Myne functions
 ### PROTECTION 
   * **Captcha** - Ask users who join the group to resolve a captcha, to filter out unwanted automatic logins.
   * **Anti-Channel** - Automatically delete channel messages if you enable it `/lock anonchannel` .
@@ -56,29 +55,22 @@ That's what approvals are for - approve of trustworthy users to allow them to se
 # Start protecting your group now!
 Getting started protecting and managing your group better with Rose Bot is very simple: [Click Here](http://t.me/szrosebot?startgroup=new) to add the bot to the group, then set it as administrator and send the command /help to manage the bot at 360° in all its functions and automations.
 
-## Customize your Rose Bot - create a clone (Deploy Heroku)
-If you want to make your bot even more unique, you can create a customized rose bot clone with a name and profile photo of your choice.
+## Customize your Myne Bot - create a clone (Deploy Heroku)
+If you want to make your bot even more unique, you can create a customized myne bot clone with a name and profile photo of your choice. 
 
-<img style="width:300px; height: 200px;" href="https://youtu.be/ZUvFSU8W7VA" src="https://telegra.ph/file/cf3a10a7f61f62983d2ca.png" alt="youtube"> 
-
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/szsupunma/sz-rosebot)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/xoxosallyyy/Myne)
 
 ## Contact & Support Chats
 
- - [support group ](https://t.me/slbotzone)
- - [News Channel ](https://t.me/szroseupdates) 
- - [Documentation ](https://szsupunma.gitbook.io/rose-bot/)
- - [Logs Channel ](https://t.me/szroselog)
- - [Network ](https://t.me/TeamSzRoseBot)
+ - [Astor Support ](https://t.me/AstorSupport)
+ - [Astor Channel ](https://t.me/AstorPro) 
+ - [Logs Channel ](https://t.me/Mynelog)
+ - [Supreme ](https://t.me/DarkkkCarnage)
 
 [![License](https://www.gnu.org/graphics/agplv3-155x51.png)](LICENSE)   
-Rose is licensed under [GNU Affero General Public License](https://www.gnu.org/licenses/agpl-3.0.en.html) v3 or later.
-
-## Special credits
-Special thanks to these amazing projects/people which/who help power Rose bot
-### [click Here](https://szsupunma.gitbook.io/rose-bot/getting-started/credits)
+Myne is licensed under [GNU Affero General Public License](https://www.gnu.org/licenses/agpl-3.0.en.html) v3 or later.
 
 ## Contributions
 #### Contributions are welcome.
 
-![Contributors](https://contrib.rocks/image?repo=szsupunma/sz-rosebot)
+![Contributors](https://contrib.rocks/image?repo=xoxosallyyy/Myne)
