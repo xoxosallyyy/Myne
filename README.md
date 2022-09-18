@@ -4,15 +4,15 @@
      
 <p align="center">
 </p><p align="center"> <a href="https://python.org">
-    <img src="http://forthebadge.com/images/badges/made-with-python.svg" alt="made-with-python" </a <a href="https://GitHub.com/spryslade">
+    <img src="http://forthebadge.com/images/badges/made-with-python.svg" alt="made-with-python" </a <a href="https://GitHub.com/xoxosallyyy">
     <img src="http://ForTheBadge.com/images/badges/built-with-love.svg" alt="built-with-love"></a> <br>
-    <img src="https://img.shields.io/github/license/spryslade/RinSuperBot-A01?style=for-the-badge&logo=appveyor" alt="LICENSE">
-    <img src="https://img.shields.io/github/contributors/spryslade/RinSuperBot-A01?style=for-the-badge&logo=appveyor" alt="Contributors">
-    <img src="https://img.shields.io/github/repo-size/spryslade/RinSuperBot-A01?style=for-the-badge&logo=appveyor" alt="Repository Size"> <br>
+    <img src="https://img.shields.io/github/license/xoxosallyyy/Myne?style=for-the-badge&logo=appveyor" alt="LICENSE">
+    <img src="https://img.shields.io/github/contributors/xoxosallyyy/Myne?style=for-the-badge&logo=appveyor" alt="Contributors">
+    <img src="https://img.shields.io/github/repo-size/xoxosallyyy/Mynr?style=for-the-badge&logo=appveyor" alt="Repository Size"> <br>
     <img src="https://img.shields.io/badge/python-3.9-green?style=for-the-badge&logo=appveyor" alt="Python Version">
-    <img src="https://img.shields.io/github/issues/spryslade/RinSuperBot-A01?style=for-the-badge&logo=appveyor" alt="Issues">
-    <img src="https://img.shields.io/github/forks/spryslade/RinSuperBot-A01?style=for-the-badge&logo=appveyor" alt="Forks">
-    <img src="https://img.shields.io/github/stars/spryslade/RinSuperBot-A01?style=for-the-badge&logo=appveyor" alt="Stars">
+    <img src="https://img.shields.io/github/issues/xoxosallyyy/Myne?style=for-the-badge&logo=appveyor" alt="Issues">
+    <img src="https://img.shields.io/github/forks/xoxosallyyy/Myne?style=for-the-badge&logo=appveyor" alt="Forks">
+    <img src="https://img.shields.io/github/stars/xoxosallyyy/Myne?style=for-the-badge&logo=appveyor" alt="Stars">
 </p>
 
 ## What is Myne for ?
