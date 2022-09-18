@@ -1,8 +1,7 @@
 <p align="center">
 <h1 align="center"><b>Myne マイン ✨</b></h1>
 <img src="https://image.krasview.ru/video/b926a4a8b69b33f/_.jpg"
-
-<h2 align="center"><b>The Telegram Bot to manage and protect groups</b></h2>
+     
 <h4 align="center">Myne bot  simplifies the management, administration and security of your group</h4>
 
 <p align="center">
