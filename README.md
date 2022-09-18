@@ -1,5 +1,5 @@
 <p align="center">
-<h1 align="center"><b>*Myne マイン* ✨</b></h1>
+<h1 align="center"><b>Myne マイン ✨</b></h1>
 <img src="https://image.krasview.ru/video/b926a4a8b69b33f/_.jpg"
      
 <p align="center">
