@@ -10,7 +10,7 @@
     <img src="https://img.shields.io/github/issues/xoxosallyyy/Myne?style=for-the-badge&logo=appveyor" alt="Issues">
     <img src="https://img.shields.io/github/forks/xoxosallyyy/Myne?style=for-the-badge&logo=appveyor" alt="Forks">
     <img src="https://img.shields.io/github/stars/xoxosallyyy/Myne/sz-rosebot?style=for-the-badge&logo=appveyor" alt="Stars">
-    <img href="https://crowdin.com/project/szrosebot" src="https://badges.crowdin.net/szrosebot/localized.svg" alt="crowndin"> 
+    <img href="https://crowdin.com/project/Myne" src="https://badges.crowdin.net/szrosebot/localized.svg" alt="crowndin"> 
 </p>
 
 ## What is Myne for ?
