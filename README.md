@@ -3,7 +3,6 @@
 <img src="https://image.krasview.ru/video/b926a4a8b69b33f/_.jpg"
      
 <p align="center">
-    <img src="https://telegra.ph/file/e3e3a576a8cf7d62d1914.jpg">
 </p><p align="center"> <a href="https://python.org">
     <img src="http://forthebadge.com/images/badges/made-with-python.svg" alt="made-with-python" </a <a href="https://GitHub.com/spryslade">
     <img src="http://ForTheBadge.com/images/badges/built-with-love.svg" alt="built-with-love"></a> <br>
