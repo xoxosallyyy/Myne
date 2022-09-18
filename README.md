@@ -9,9 +9,7 @@
     <img src="https://img.shields.io/github/repo-size/xoxosallyyy/Myne?style=for-the-badge&logo=appveyor" alt="Repository Size"> <br>
     <img src="https://img.shields.io/github/issues/xoxosallyyy/Myne?style=for-the-badge&logo=appveyor" alt="Issues">
     <img src="https://img.shields.io/github/forks/xoxosallyyy/Myne?style=for-the-badge&logo=appveyor" alt="Forks">
-    <img src="https://img.shields.io/github/stars/xoxosallyyy/Myne/sz-rosebot?style=for-the-badge&logo=appveyor"
-         
-</p>
+    </p>
 
 ## What is Myne for ?
 
